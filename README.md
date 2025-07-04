@@ -1,43 +1,34 @@
 # NeuraMatrix Local AI Kit
 
-> **Offline AI Assistant** you control — built from open-source tools, designed for your home or business, no cloud required.
+> 🧠 Offline AI Assistant you own and control — runs on your recycled hardware, fully local, no cloud needed.
 
 ---
 
-## ✅ What This Is
+## 🚀 What This Is
 
-A complete DIY kit to turn an old Thin Client or mini-PC into a voice-enabled, offline AI assistant.  
-Perfect for solo entrepreneurs, privacy lovers, or smart home DIYers.
-
----
-
-## 🧠 Core Features
-
-- **Runs Locally**: No internet required after setup.
-- **Powered by Open-Source Tools**:
-  - [Ollama](https://ollama.com) for local LLMs (like LLaMA3)
-  - [Rhasspy](https://rhasspy.readthedocs.io/en/latest/) for voice control
-  - Ubuntu OS, Python, Flask
-- **Can Use Old Hardware**: Thin clients, Raspberry Pi, or spare laptops.
-- **Optional Remote Control** via old Android phone or SSH.
+A DIY kit to turn any Thin Client, mini-PC, or old laptop into your **own local ChatGPT-style AI** — and soon, a **voice assistant** like Jarvis.  
+Perfect for solo entrepreneurs, ADHD thinkers, privacy nerds, or smart home DIYers.
 
 ---
 
-## 📦 What's in the Kit
+## ✅ What Works So Far
 
-- Step-by-step install script
-- Pre-configured AI models
-- Documentation to make setup ADHD-friendly
-- Voice input, text chat, and smart assistant modes
-- Optional smart home integrations (Home Assistant, MQTT)
+- Ubuntu-based install script ✅  
+- [Ollama](https://ollama.com) LLM runtime installed ✅  
+- LLaMA 3 model downloading / ready ✅  
+- Local text-based AI chat via `./chat.sh` ✅
+
+Coming next:
+- [ ] Voice assistant mode (Rhasspy/Mycroft)
+- [ ] Mobile mic + speaker bridge (old phone)
+- [ ] Smart Home links (Home Assistant, MQTT)
 
 ---
 
-## 🛠️ Getting Started
+## 🛠️ Getting Started (TL;DR)
 
-> This kit assumes you have Ubuntu installed on your Thin Client or old PC.
-
-1. Clone this repo  
-   ```bash
-   git clone https://github.com/fullstackcrypto/neuramatrix-local-ai-kit.git
-   cd neuramatrix-local-ai-kit
+```bash
+git clone https://github.com/fullstackcrypto/neuramatrix-local-ai-kit.git
+cd neuramatrix-local-ai-kit
+chmod +x install.sh
+./install.sh
