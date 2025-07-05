@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NeuraMatrix AI Console</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #000;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #00ffff;
+      text-shadow: 0 0 8px #00ffff;
+    }
+    form, .panel {
+      background: rgba(0, 255, 255, 0.05);
+      border: 1px solid #00ffff88;
+      box-shadow: 0 0 12px #00ffff22;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    input, select, button {
+      background: #000;
+      color: #00ffff;
+      border: 1px solid #00ffff88;
+      padding: 10px;
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    input[type="checkbox"] {
+      width: auto;
+      transform: scale(1.3);
+      margin-right: 8px;
+    }
+    .plugin-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+    }
+    .response, .summary {
+      white-space: pre-wrap;
+      background: #001d1d;
+      border: 1px solid #00ffff33;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      box-shadow: 0 0 6px #00ffff33;
+    }
+    a {
+      color: #00ffff;
+      text-decoration: underline;
+    }
+    a:hover {
+      color: #fff;
+    }
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>NEURAMATRIX AI CONSOLE</h1>
+
+    {% if error %}
+      <div class="response">{{ error }}</div>
+      <form method="POST">
+        <input type="hidden" name="profile" value="{{ selected }}">
+        <input name="password" placeholder="Enter password" type="password" />
+        <button type="submit">Unlock</button>
+      </form>
+    {% else %}
+
+    <form method="POST">
+      <label for="profile">Select Profile:</label>
+      <select name="profile">
+        {% for p in profiles %}
+        <option value="{{ p }}" {% if p == selected %}selected{% endif %}>{{ p }}</option>
+        {% endfor %}
+      </select>
+      <input name="prompt" placeholder="Ask something..." />
+      <button type="submit">Ask</button>
+    </form>
+
+    <form method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="profile" value="{{ selected }}">
+      <input type="file" name="file" />
+      <button type="submit">Upload File</button>
+    </form>
+
+    {% if profile.name %}
+      <form method="POST" action="/delete" onsubmit="return confirm('Delete profile?');">
+        <input type="hidden" name="delete_profile" value="{{ selected }}">
+        <button type="submit">🗑 Delete This Profile</button>
+      </form>
+    {% endif %}
+
+    <a href="/create">➕ Create New Profile</a>
+
+    <div class="panel">
+      <h2>🧠 Memory</h2>
+      <div class="response">{{ profile.ai_memory | join(', ') }}</div>
+    </div>
+
+    {% if response %}
+      <div class="panel">
+        <h2>🤖 AI Response</h2>
+        <div class="response">{{ response }}</div>
+      </div>
+    {% endif %}
+
+    {% if summary %}
+      <div class="panel">
+        <h2>📄 File Summary</h2>
+        <div class="summary">{{ summary }}</div>
+      </div>
+    {% endif %}
+
+    <div class="panel">
+      <h2>🧩 Plugin Panel</h2>
+      <form method="POST">
+        <input type="hidden" name="profile" value="{{ selected }}">
+        {% for key, label in plugin_labels.items() %}
+        <div class="plugin-toggle">
+          <label>{{ label }}</label>
+          <input type="checkbox" name="{{ key }}" onchange="this.form.submit();" {% if plugin_states[key] %}checked{% endif %}>
+        </div>
+        {% endfor %}
+      </form>
+    </div>
+
+    <div class="panel">
+      <h2>🛠 System Tools</h2>
+      <form method="POST">
+        <input type="hidden" name="profile" value="{{ selected }}">
+        <button type="submit" name="check_update">🔁 Check for Updates</button>
+        <button type="submit" name="backup_now">💾 Backup Data</button>
+        <button type="submit" name="reset_brain">🧠 Reset Memory</button>
+      </form>
+    </div>
+
+    <div class="panel">
+      <h2>📡 Tailscale Link</h2>
+      {% if tailscale_ip != "Not Connected" %}
+        <p>Remote Access: <strong>http://{{ tailscale_ip }}:5000</strong></p>
+        <button onclick="navigator.clipboard.writeText('http://{{ tailscale_ip }}:5000')">📎 Copy Link</button>
+        <p style="color: #0f0;">🟢 Connected</p>
+      {% else %}
+        <p style="color: #ff0;">🔌 Not Connected to Tailscale</p>
+      {% endif %}
+    </div>
+
+    {% endif %}
+  </div>
+</body>
+</html>
