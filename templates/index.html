@@ -110,7 +110,7 @@
     {% if profile.name %}
       <form method="POST" action="/delete" onsubmit="return confirm('Delete profile?');">
         <input type="hidden" name="delete_profile" value="{{ selected }}">
-        <button type="submit">🗑 Delete This Profile</button>
+        <button type="submit" name="delete_button">🗑 Delete This Profile</button>
       </form>
     {% endif %}
 
@@ -152,9 +152,9 @@
       <h2>🛠 System Tools</h2>
       <form method="POST">
         <input type="hidden" name="profile" value="{{ selected }}">
-        <button type="submit" name="check_update">🔁 Check for Updates</button>
-        <button type="submit" name="backup_now">💾 Backup Data</button>
-        <button type="submit" name="reset_brain">🧠 Reset Memory</button>
+        <button type="submit" name="check_update" value="1">🔁 Check for Updates</button>
+        <button type="submit" name="backup_now" value="1">💾 Backup Data</button>
+        <button type="submit" name="reset_brain" value="1">🧠 Reset Memory</button>
       </form>
     </div>
 
