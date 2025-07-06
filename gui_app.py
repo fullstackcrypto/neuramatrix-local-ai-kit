@@ -43,14 +43,19 @@ def delete_profile(filename):
     os.remove(os.path.join(PROFILE_DIR, filename))
 
 def call_ollama(prompt):
-    result = subprocess.run(
-        ["ollama", "run", "mistral"],
-        input=prompt.encode(),
-        stdout=subprocess.PIPE,
-        stderr=subprocess.DEVNULL,
-        timeout=45
-    )
-    return result.stdout.decode().strip()
+    try:
+        result = subprocess.run(
+            ["ollama", "run", "mistral"],
+            input=prompt.encode(),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            timeout=25
+        )
+        return result.stdout.decode().strip()
+    except subprocess.TimeoutExpired:
+        return "⚠️ AI timed out. Ollama may be slow or inactive. Try again later."
+    except Exception as e:
+        return f"⚠️ Unexpected error: {str(e)}"
 
 def load_plugin_states():
     if os.path.exists(PLUGIN_STATES):
@@ -177,10 +182,19 @@ def create():
 
 @app.route("/delete", methods=["POST"])
 def delete():
-    profile_to_delete = request.form.get("delete_profile")
-    profile_path = os.path.join(PROFILE_DIR, profile_to_delete)
-    if os.path.exists(profile_path) and profile_to_delete != DEFAULT_PROFILE:
-        os.remove(profile_path)
+    profile_to_delete = request.form.get("delete_profile", "").strip()
+    print(f"🗑 Attempting to delete: {profile_to_delete}")
+
+    if profile_to_delete and profile_to_delete != DEFAULT_PROFILE:
+        path = os.path.join(PROFILE_DIR, profile_to_delete)
+        if os.path.exists(path):
+            os.remove(path)
+            print(f"✅ Deleted: {profile_to_delete}")
+        else:
+            print("❌ File not found:", path)
+    else:
+        print("⚠️ Cannot delete default profile or invalid name.")
+
     return redirect("/")
 
 if __name__ == "__main__":
