@@ -1,7 +1,7 @@
 # NeuraMatrix™ AI Kit
 
 **Version:** 1.0  
-**Author:** CHARLEY’S LLC / Ready-Set Solutions  
+**Author:** Charl3y  
 **Repo:** https://github.com/fullstackcrypto/neuramatrix-local-ai-kit  
 
 ---
@@ -71,17 +71,39 @@ GUI: `http://localhost:5000` or `http://<tailscale-ip>:5000`
 ---
 
 ## 📁 Folder Structure
-```
-neuramatrix/
+├── assistant_core.py
+├── backups
+│   ├── backup-20250705-215336
+│   └── backup-20250705-215603
 ├── gui_app.py
-├── templates/index.html
-├── profiles/charley.json
-├── memory/session_log.txt
-├── plugins/cloud_sync.py
+├── install.sh
+├── LICENSE
+├── memory
+│   └── session_log.txt
+├── np
+├── plugins
+│   ├── cloud_sync.py
+│   ├── daily_summary.py
+│   ├── __init__.py
+│   ├── notepad.py
+│   └── __pycache__
 ├── plugin_states.json
-├── uploads/
-└── backups/
-```
+├── profiles
+│   ├── calvin.json
+│   └── charley.json
+├── README.md
+├── templates
+│   ├── create.html
+│   └── index.html
+├── uploads
+└── venv
+    ├── bin
+    ├── include
+    ├── lib
+    ├── lib64 -> lib
+    └── pyvenv.cfg
+
+15 directories, 17 files
 
 ---
 
