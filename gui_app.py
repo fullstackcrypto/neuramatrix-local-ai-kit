@@ -116,14 +116,14 @@ def index():
             plugin_states[plugin] = not plugin_states.get(plugin, False)
             save_plugin_states(plugin_states)
 
-    if "check_update" in request.form:
+    if request.form.get("check_update"):
         ai_response = "✅ System is up to date."
 
-    if "backup_now" in request.form:
+    if request.form.get("backup_now"):
         backup_data()
         ai_response = "💾 Backup created."
 
-    if "reset_brain" in request.form:
+    if request.form.get("reset_brain"):
         reset_memory()
         ai_response = "🧠 Memory wiped."
 
