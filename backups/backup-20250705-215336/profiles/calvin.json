@@ -1,0 +1,14 @@
+{
+  "name": "Calvin",
+  "role": "User",
+  "wake_time": "07:00",
+  "preferences": {
+    "coffee": "no",
+    "notifications": "voice",
+    "tone": "kind and inteligent"
+  },
+  "ai_memory": [
+    "new user profile"
+  ],
+  "password": ""
+}

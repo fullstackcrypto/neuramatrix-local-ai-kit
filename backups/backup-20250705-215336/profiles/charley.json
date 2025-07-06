@@ -1,0 +1,20 @@
+{
+  "name": "Charley",
+  "role": "Owner",
+  "wake_time": "06:15",
+  "preferences": {
+    "coffee": "black with sugar",
+    "notifications": "voice",
+    "tone": "casual"
+  },
+  "routines": [
+    "morning_summary",
+    "check_plugins",
+    "reminder_review"
+  ],
+  "ai_memory": [
+    "prefers quiet mornings",
+    "has ADHD, prefers concise responses",
+    "owns CHARLEYS LLC/ DBA Ready-Set Solutions"
+  ]
+}
