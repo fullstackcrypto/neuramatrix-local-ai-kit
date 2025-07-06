@@ -1,7 +1,7 @@
 # NeuraMatrix™ AI Kit
 
 **Version:** 1.0  
-**Author:** Charl3y  
+**Author:** CHARLEYS LLC  
 **Repo:** https://github.com/fullstackcrypto/neuramatrix-local-ai-kit  
 
 ---
