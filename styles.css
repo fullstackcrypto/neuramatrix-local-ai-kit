@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #0a192f, #1e3a8a); /* Dark tech gradient */
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.header {
+    text-align: center;
+    padding: 50px 20px;
+    background-image: url('../images/background.jpg'); /* Add your neural background */
+    background-size: cover;
+    background-position: center;
+}
+
+.section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card, .pricing-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover, .pricing-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); /* Glow effect */
+}
+
+.cta-button, .buy-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #00bfff;
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover, .buy-button:hover {
+    background-color: #00ffff;
+}
+
+.section-image, .feature-icon {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    animation: pulse 2s infinite; /* Hypnotic pulse */
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: #0a192f;
+}
+
+.fade-in, .fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
