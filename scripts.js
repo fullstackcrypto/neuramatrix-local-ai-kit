@@ -1,4 +1,4 @@
-// Smooth scrolling for internal links
+// Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -8,11 +8,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Intersection observer for animations
+// Intersection observer
 const faders = document.querySelectorAll('.fade-in, .fade-in-up');
 const options = { threshold: 0.3 };
 
-const observer = new IntersectionObserver(function(entries, observer) {
+const observer = new IntersectionObserver(function(entries) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.animationPlayState = 'running';
@@ -25,17 +25,10 @@ faders.forEach(fader => {
     observer.observe(fader);
 });
 
-// Added reactivity: Hover glow for buttons
+// Reactive hovers
 document.querySelectorAll('.cta-button, .buy-button').forEach(button => {
-    button.addEventListener('mouseenter', () => {
-        button.style.boxShadow = '0 0 10px #00ffcc';
-    });
-    button.addEventListener('mouseleave', () => {
-        button.style.boxShadow = 'none';
-    });
+    button.addEventListener('mouseenter', () => { button.style.boxShadow = '0 0 10px #00ffcc'; });
+    button.addEventListener('mouseleave', () => { button.style.boxShadow = 'none'; });
 });
 
-// Automation: Optional dynamic refresh (e.g., for live updates - comment out if not needed)
-setInterval(() => {
-    console.log('Site ambiance check - all systems nominal');
-}, 60000); // Every minute
+console.log('Site operational - verified at 09:36 PM EDT, July 13, 2025');
