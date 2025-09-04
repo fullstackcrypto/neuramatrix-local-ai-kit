@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # NeuraMatrix™ AI Kit
 
 **Version:** 1.0  
@@ -121,3 +122,13 @@ This system runs completely offline by default. Remote access is encrypted via T
 ---
 
 ## 🚀 Made with ♥ by CHARLEY'S LLC / NeuraMatrix.ai
+=======
+# NeuraMatrix Local AI Kit v2.0
+
+Enterprise-grade offline AI assistant with enhanced security.
+
+## Quick Start
+git clone https://github.com/fullstackcrypto/neuramatrix-local-ai-kit.git
+cd neuramatrix-local-ai-kit && python3 -m venv venv && source venv/bin/activate
+pip install -r requirements.txt && python run.py
+>>>>>>> e3a3054 (NeuraMatrix v2.0 - Complete security overhaul and modernization)
